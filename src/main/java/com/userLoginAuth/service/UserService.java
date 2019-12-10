@@ -14,34 +14,36 @@ import java.util.Optional;
 public class UserService {
 
 
-    @Autowired
     private UserRepository userRepository;
 
 
-    public User createUser(User user){
-
-        return userRepository.save( user );
-
+    public Iterable<User> getAllUsers(){
+      return userRepository.findAll();
     }
+
 
     public Optional<User> getUserbyId(Long userId){
-
-    return userRepository.findById( userId );
+      return userRepository.findById( userId );
     }
 
-     public void verifyUserId(Long userId, String message) {
 
-        Optional<User> user = userRepository.findById( userId );
+    public User createUser(User user){
+      return userRepository.save( user );
+    }
+
+
+     public void verifyUserId(Long userId, String message) {
+      Optional<User> user = userRepository.findById( userId );
      }
 
-     public void deleteUser(Long userId){
 
+     public void deleteUser(Long userId){
         userRepository.deleteById( userId );
      }
 
+
      public User updateUser(User user, Long userId){
         verifyUserId( userId,"User account is updated cuz" );
-
 
         user.setId( userId );
 

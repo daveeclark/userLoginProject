@@ -1,7 +1,6 @@
 package com.userLoginAuth.service;
 
 
-import com.userLoginAuth.exceptions.ResourceNotFoundException;
 import com.userLoginAuth.model.User;
 import com.userLoginAuth.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +47,11 @@ public class UserService {
 
         return userRepository.save( user );
      }
+
+     public Iterable<User> getAllUsers(){
+        return userRepository.findAll();
+     }
+
 
 
 

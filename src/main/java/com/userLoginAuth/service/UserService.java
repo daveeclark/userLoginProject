@@ -17,10 +17,6 @@ public class UserService {
     private UserRepository userRepository;
 
 
-    public Iterable<User> getAllUsers(){
-      return userRepository.findAll();
-    }
-
 
     public Optional<User> getUserbyId(Long userId){
       return userRepository.findById( userId );
@@ -45,7 +41,7 @@ public class UserService {
      public User updateUser(User user, Long userId){
         verifyUserId( userId,"User account is updated cuz" );
 
-        user.setId( userId );
+        user.setUserId( userId );
 
         return userRepository.save( user );
      }

@@ -1,34 +1,41 @@
 package com.userLoginAuth.model;
 
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
 public class User {
 
-
-    private Long id;
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private Long userId;
     private String firstname;
     private String lastname;
+    private String email;
     private String password;
 
-    public User(){
+    public User() {
 
 
     }
 
-
-    public User(Long id, String firstname, String lastname, String password) {
-        this.id = id;
+    public User(Long userId, String firstname, String lastname, String email, String password) {
+        this.userId = userId;
         this.firstname = firstname;
         this.lastname = lastname;
+        this.email = email;
         this.password = password;
     }
 
-    public Long getId() {
-        return id;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public String getFirstname() {
@@ -45,6 +52,14 @@ public class User {
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {

@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 //RestController clarifies that class is a controller
@@ -24,23 +25,23 @@ public class UserController {
     }
 
     @GetMapping("/users/{userId}")
-    public ResponseEntity<?> getUserById(Long userId){
+    public ResponseEntity<?> getUserById(@PathVariable Long userId){
       Optional<User> user = userService.getUserbyId(userId);
       return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     @PostMapping("/users")
-    public ResponseEntity<?> createUser(User user){
+    public ResponseEntity<?> createUser(@Valid @RequestBody User user){
       return new ResponseEntity<>(userService.createUser(user), HttpStatus.CREATED);
     }
 
     @PutMapping("/users/{userId}")
-    public ResponseEntity<?> updateUser(User user, Long userId){
+    public ResponseEntity<?> updateUser(@RequestBody User user, @PathVariable Long userId){
       return new ResponseEntity<>(userService.updateUser(user, userId), HttpStatus.OK);
     }
 
     @DeleteMapping("/users/{userId}")
-    public ResponseEntity<?> deleteUser(Long userId){
+    public ResponseEntity<?> deleteUser(@PathVariable Long userId){
       userService.deleteUser(userId);
       return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

@@ -1,5 +1,8 @@
 package com.userLoginAuth.repositories;
 
-public interface UserRepository {
+import com.userLoginAuth.model.User;
+import org.springframework.data.repository.CrudRepository;
+
+public interface UserRepository extends CrudRepository<User,Long>{
 
 }

@@ -4,14 +4,13 @@ package com.userLoginAuth.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name="user")
 public class User {
 
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
     private Long userId;
-    private String firstname;
-    private String lastname;
+    private String firstName;
+    private String lastName;
     private String email;
     private String password;
 
@@ -19,10 +18,10 @@ public class User {
 
     }
 
-    public User(Long userId, String firstname, String lastname, String email, String password) {
+    public User(String firstName, String lastName, String email, String password) {
         this.userId = userId;
-        this.firstname = firstname;
-        this.lastname = lastname;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.password = password;
     }
@@ -35,23 +34,23 @@ public class User {
         this.userId = userId;
     }
 
-    public String getFirstname() {
-        return firstname;
-    }
+  public String getFirstName() {
+    return firstName;
+  }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
+  public void setFirstName(String firstName) {
+    this.firstName = firstName;
+  }
 
-    public String getLastname() {
-        return lastname;
-    }
+  public String getLastName() {
+    return lastName;
+  }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
+  public void setLastName(String lastName) {
+    this.lastName = lastName;
+  }
 
-    public String getEmail() {
+  public String getEmail() {
         return email;
     }
 
